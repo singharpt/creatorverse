@@ -3,9 +3,13 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import addCreator from "../api/addCreatorAPI";
+import { useNavigate } from "react-router-dom";
 
 function Form() {
   // creating data schema with yup for data validation
+
+  const navigate = useNavigate({ replace: true });
+
   const schema = yup.object().shape({
     name: yup.string().required("Creator name is required!"),
     url: yup.string().required("Last Name is required!"),
@@ -24,7 +28,9 @@ function Form() {
   const onSubmit = async (data) => {
     console.log(data);
     const response = await addCreator(data);
-    console.log(response);
+    if (response) {
+      navigate("/show");
+    }
   };
 
   return (

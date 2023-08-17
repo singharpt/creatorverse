@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import getCreatorData from "../api/getCreatorAPI";
-import Creator from "../components/creator";
+import { getAllCreators } from "../api/getCreatorAPI";
+import Creator from "../components/creatorCard";
 
 function ShowCreators() {
   const [creatorData, setCreatorData] = useState(null);
 
   const fetchData = async () => {
-    const data = await getCreatorData();
+    const data = await getAllCreators();
     if (data) {
       setCreatorData(data);
     }

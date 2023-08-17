@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Form from "./pages/AddCreator";
 import ShowCreators from "./pages/ShowCreators";
+import ViewCreator from "./pages/ViewCreator";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +16,7 @@ root.render(
         <Route path="/" element={<App />}></Route>
         <Route path="/add" element={<Form />}></Route>
         <Route path="/show" element={<ShowCreators />}></Route>
+        <Route path="/view/:creatorName" element={<ViewCreator />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

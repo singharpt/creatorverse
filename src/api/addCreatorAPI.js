@@ -12,11 +12,11 @@ const addCreator = async (creatorData) => {
 
   if (error) {
     console.error("Error inserting record:", error);
-    return null; // Or handle the error in an appropriate way
+    return false; // Or handle the error in an appropriate way
   }
 
   console.log("Record inserted successfully:", data);
-  return data;
+  return true;
 };
 
 export default addCreator;
