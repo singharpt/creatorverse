@@ -3,10 +3,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   height: 80vh;
+}
+
+.form-container h1 {
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 .form-input {
@@ -19,18 +24,18 @@
   background-color: white;
 }
 
-.form-submit {
-  background-color: #1976d2;
-  color: white;
-  padding: 25px;
-  font-size: 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+.form-buttons {
+  display: flex;
   width: 600px;
+  justify-content: space-between;
+  gap: 50px;
+  margin-top: 20px;
 }
 
-.form-submit:hover {
-  background-color: #1565c0;
+.form-submit {
+  width: 100%;
+}
+
+.form-delete {
+  width: 100%;
 }

@@ -12,9 +12,6 @@ function CreatorForm(props) {
   const creatorData = props.creatorData;
   const deleteCreatorFunction = props.deleteCreatorFunction;
   const operation = props.operation;
-  console.log(creatorData);
-  console.log(deleteCreatorFunction);
-  console.log(operation);
 
   const navigate = useNavigate({ replace: true });
 
@@ -66,7 +63,7 @@ function CreatorForm(props) {
     } else {
       const response = await addCreatorAPI(data);
       if (response) {
-        navigate("/add");
+        navigate("/show");
       }
     }
   };
@@ -74,6 +71,11 @@ function CreatorForm(props) {
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+        {creatorData === null ? (
+          <h1>ADD CREATOR DETAILS</h1>
+        ) : (
+          <h1>UPDATE CREATOR DETAILS</h1>
+        )}
         <TextField
           label="Creator's Name"
           variant="filled"
@@ -81,6 +83,7 @@ function CreatorForm(props) {
           {...register("name")}
           error={!!errors.name}
           defaultValue={creatorData && creatorData?.name}
+          margin="normal"
           InputProps={
             creatorData && {
               readOnly: true,
@@ -89,23 +92,27 @@ function CreatorForm(props) {
           helperText={errors.name?.message}
         />
         <TextField
-          label="Creator's URL"
+          label="Creator's Page URL"
           variant="filled"
           className="form-input"
           {...register("url")}
           error={!!errors.url}
-          defaultValue={creatorData && creatorData?.url}
+          defaultValue={creatorData === null ? "https://" : creatorData?.url}
           helperText={errors.url?.message}
+          margin="normal"
         />
         <TextField
-          label="Creator's Description"
+          label="Creator's Content Description"
           variant="filled"
           className="form-input"
           multiline
           rows={2}
           {...register("desc")}
           error={!!errors.desc}
+          defaultValue={creatorData && creatorData?.description}
           helperText={errors.desc?.message}
+          margin="normal"
+          xw
         />
         <TextField
           label="Creator's Image URL"
@@ -115,6 +122,7 @@ function CreatorForm(props) {
           error={!!errors.img}
           defaultValue={creatorData && creatorData?.imageURL}
           helperText={errors.img?.message}
+          margin="normal"
         />
         <TextField
           label="Creator's Youtube URL"
@@ -124,6 +132,7 @@ function CreatorForm(props) {
           error={!!errors.ytu}
           defaultValue={creatorData && creatorData?.youtubeURL}
           helperText={errors.ytu?.message}
+          margin="normal"
         />
         <TextField
           label="Creator's Instagram URL"
@@ -133,6 +142,7 @@ function CreatorForm(props) {
           error={!!errors.igu}
           defaultValue={creatorData && creatorData?.instagramURL}
           helperText={errors.igu?.message}
+          margin="normal"
         />
         <TextField
           label="Creator's Twitter URL"
@@ -142,20 +152,30 @@ function CreatorForm(props) {
           error={!!errors.twu}
           defaultValue={creatorData && creatorData?.twitterURL}
           helperText={errors.twu?.message}
+          margin="normal"
         />
-        <Button variant="contained" className="form-submit" type="submit">
-          Save Changes
-        </Button>
-        {deleteCreatorFunction && (
+        <div className="form-buttons">
           <Button
             variant="contained"
-            className="form-submit"
-            type="button"
-            onClick={deleteCreatorFunction}
+            size="large"
+            style={{ width: "100%", fontWeight: "600" }}
+            type="submit"
           >
-            Delete
+            Save Creator
           </Button>
-        )}
+          {deleteCreatorFunction && (
+            <Button
+              variant="contained"
+              color="error"
+              type="button"
+              style={{ width: "100%", fontWeight: "bold" }}
+              onClick={deleteCreatorFunction}
+              size="large"
+            >
+              Delete Creator
+            </Button>
+          )}
+        </div>
       </form>
     </Container>
   );

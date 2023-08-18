@@ -13,6 +13,12 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 
 function Creator({ creatorData }) {
   const viewCreatorURL = `/view/${creatorData.name}`;
+  let trimmedDescription = null;
+  if (creatorData && creatorData.description.length > 100) {
+    trimmedDescription = creatorData.description.slice(0, 100) + "...";
+  } else {
+    trimmedDescription = creatorData.description;
+  }
 
   return (
     <Card
@@ -22,16 +28,16 @@ function Creator({ creatorData }) {
         backgroundColor: "rgba(255, 255, 255, 0.9)",
         width: "345px",
         height: "400px",
-        justifyContent: "space-between",
-        margin: "40px",
+        margin: "25px",
         gap: "20px",
-        padding: "10px",
+        padding: "20px",
       }}
     >
       <Link to={creatorData?.url}>
         <CardMedia
           sx={{ height: 200 }}
           image={creatorData?.imageURL}
+          style={{ backgroundPosition: "top center" }}
           title="creators image"
         />
       </Link>
@@ -48,6 +54,23 @@ function Creator({ creatorData }) {
         >
           <div style={{ fontWeight: "bold", fontSize: "28px" }}>
             {creatorData.name}
+            <CardActions>
+              {creatorData?.youtubeURL && (
+                <Link to={creatorData?.youtubeURL}>
+                  <YouTubeIcon style={{ color: "black" }}>{}</YouTubeIcon>
+                </Link>
+              )}
+              {creatorData?.instagramURL && (
+                <Link to={creatorData?.instagramURL}>
+                  <InstagramIcon style={{ color: "black" }}>{}</InstagramIcon>
+                </Link>
+              )}
+              {creatorData?.twitterURL && (
+                <Link to={creatorData?.twitterURL}>
+                  <TwitterIcon style={{ color: "black" }}>{}</TwitterIcon>
+                </Link>
+              )}
+            </CardActions>
           </div>
           <CardActions>
             <Link to={viewCreatorURL}>
@@ -60,25 +83,8 @@ function Creator({ creatorData }) {
           color="text.secondary"
           style={{ fontSize: "18px" }}
         >
-          {creatorData.description}
+          {trimmedDescription}
         </Typography>
-        <CardActions>
-          {creatorData?.youtubeURL && (
-            <Link to={creatorData?.youtubeURL}>
-              <YouTubeIcon style={{ color: "black" }}>{}</YouTubeIcon>
-            </Link>
-          )}
-          {creatorData?.instagramURL && (
-            <Link to={creatorData?.instagramURL}>
-              <InstagramIcon style={{ color: "black" }}>{}</InstagramIcon>
-            </Link>
-          )}
-          {creatorData?.twitterURL && (
-            <Link to={creatorData?.twitterURL}>
-              <TwitterIcon style={{ color: "black" }}>{}</TwitterIcon>
-            </Link>
-          )}
-        </CardActions>
       </CardContent>
     </Card>
   );
