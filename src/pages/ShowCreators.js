@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllCreators } from "../api/getCreatorAPI";
 import Creator from "../components/creatorCard";
+import "./pages.css";
 
 function ShowCreators() {
   const [creatorData, setCreatorData] = useState(null);
@@ -19,7 +20,7 @@ function ShowCreators() {
   console.log(creatorData);
 
   return (
-    <div>
+    <div className="show-creators-main">
       {creatorData &&
         creatorData.map((item) => (
           <div key={item.id}>

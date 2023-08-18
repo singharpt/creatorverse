@@ -7,11 +7,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Form from "./pages/AddCreator";
 import ShowCreators from "./pages/ShowCreators";
 import ViewCreator from "./pages/ViewCreator";
+import Header from "./Header";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/add" element={<Form />}></Route>

@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.app {
+  background-image: url("../public/lander-image-2.avif"); /* Update the path accordingly */
+  background-size: cover; /* Adjust how the image should cover the container */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center center;
+  background-color: black;
+  height: 100vh; /* Set the height to 100% of the viewport height */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.lander {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.lander-heading {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.lander-heading-h1 {
+  padding-top: 5rem;
+  margin: auto 0;
+  font-weight: normal;
+  color: white;
+}
+
+.lander-heading-h1-span {
+  color: #00bcd4;
+  font-weight: bold;
+}
+
+.lander-button {
+  display: flex;
+  gap: 100px;
+  margin-top: 100px;
+}
+
+.lander-button Button {
+  padding: 10px 20px;
+  font-size: 25px;
+  font-weight: 500;
+  border-color: #00bcd4;
+  border-radius: 5px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.lander-button button:hover {
+  background-color: #00bcd4;
+  border: white;
 }

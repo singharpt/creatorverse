@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import addCreator from "../api/addCreatorAPI";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, Container } from "@mui/material";
+import "./pages.css";
 
 function Form() {
   // creating data schema with yup for data validation
@@ -34,35 +36,45 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <input type="text" placeholder="Creator's Name" {...register("name")} />
-        <p>{errors.name?.message}</p>
-      </div>
-      <div>
-        <input type="text" placeholder="Creator's URL" {...register("url")} />
-        <p>{errors.url?.message}</p>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Creator's Description"
+    <Container>
+      <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+        <TextField
+          label="Creator's Name"
+          variant="outlined"
+          className="form-input"
+          {...register("name")}
+          error={!!errors.name}
+          helperText={errors.name?.message}
+        />
+        <TextField
+          label="Creator's URL"
+          variant="outlined"
+          className="form-input"
+          {...register("url")}
+          error={!!errors.url}
+          helperText={errors.url?.message}
+        />
+        <TextField
+          label="Creator's Description"
+          variant="outlined"
+          className="form-input"
           {...register("desc")}
+          error={!!errors.desc}
+          helperText={errors.desc?.message}
         />
-        <p>{errors.desc?.message}</p>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Creator's Image URL"
+        <TextField
+          label="Creator's Image URL"
+          variant="outlined"
+          className="form-input"
           {...register("img")}
+          error={!!errors.img}
+          helperText={errors.img?.message}
         />
-        <p>{errors.img?.message}</p>
-      </div>
-      <div>
-        <input type="submit" />
-      </div>
-    </form>
+        <Button variant="contained" className="form-submit" type="submit">
+          Submit
+        </Button>
+      </form>
+    </Container>
   );
 }
 
