@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-image: url("../public/lander-image-2.avif");
+  background-size: cover; /* This will ensure the image covers the entire background */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 code {

@@ -7,6 +7,9 @@ const addCreator = async (creatorData) => {
       url: creatorData.url,
       description: creatorData.desc,
       imageURL: creatorData.img,
+      youtubeURL: creatorData.ytu,
+      instagramURL: creatorData.igu,
+      twitterURL: creatorData.twu,
     },
   ]);
 

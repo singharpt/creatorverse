@@ -21,12 +21,17 @@ function ShowCreators() {
 
   return (
     <div className="show-creators-main">
-      {creatorData &&
+      {creatorData && creatorData?.length !== 0 ? (
         creatorData.map((item) => (
           <div key={item.id}>
             <Creator creatorData={item} />
           </div>
-        ))}
+        ))
+      ) : (
+        <h1 style={{ fontSize: "70px", fontWeight: "bolder", color: "white" }}>
+          No Creator Data Available
+        </h1>
+      )}
     </div>
   );
 }

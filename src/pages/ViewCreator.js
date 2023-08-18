@@ -6,18 +6,42 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import updateCreator from "../api/updateCreatorAPI";
 import { getSingleCreator } from "../api/getCreatorAPI";
+import { TextField, Button, Container } from "@mui/material";
+import { decode } from "html-entities";
 
 function ViewCreator() {
   const [creatorData, setCreatorData] = useState(null);
-  // creating data schema with yup for data validation
+
+  const checkURL = (value) => {
+    if (value === "") {
+      return true;
+    } else {
+      return value.startsWith("https");
+    }
+  };
+
   const schema = yup.object().shape({
     name: yup.string().required("Creator name is required!"),
-    url: yup.string().required("Last Name is required!"),
-    desc: yup.string().required("Description is required!"),
-    img: yup.string().required("Image URL is required!"),
+    url: yup
+      .mixed()
+      .test("urlCheck", "URL must start with 'https' or be null", checkURL),
+    desc: yup.string(),
+    img: yup
+      .mixed()
+      .test("urlCheck", "URL must start with 'https' or be null", checkURL),
+    ytu: yup
+      .mixed()
+      .test("urlCheck", "URL must start with 'https' or be null", checkURL),
+    igu: yup
+      .mixed()
+      .test("urlCheck", "URL must start with 'https' or be null", checkURL),
+    twu: yup
+      .mixed()
+      .test("urlCheck", "URL must start with 'https' or be null", checkURL),
   });
 
-  const { creatorName } = useParams();
+  let url_coded_name = useParams();
+  const { creatorName } = decode(url_coded_name);
 
   const fetchData = async () => {
     const data = await getSingleCreator(creatorName);
@@ -48,7 +72,7 @@ function ViewCreator() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: creatorData ? creatorData[0] : {},
+    defaultValues: creatorData ? creatorData.data : {},
   });
 
   // The submit function called inside handleSubmit state method
@@ -61,50 +85,91 @@ function ViewCreator() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <input
-          type="text"
-          placeholder="Creator's Name"
-          value={creatorName}
-          readOnly
-          {...register("name")}
-        ></input>
-        <p>{errors.name?.message}</p>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Creator's URL"
-          defaultValue={creatorData ? creatorData[0].url : ""}
-          {...register("url")}
-        />
-
-        <p>{errors.url?.message}</p>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Creator's Description"
-          defaultValue={creatorData ? creatorData[0].description : ""}
-          {...register("desc")}
-        />
-        <p>{errors.desc?.message}</p>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Creator's Image URL"
-          defaultValue={creatorData ? creatorData[0].imageURL : ""}
-          {...register("img")}
-        />
-        <p>{errors.img?.message}</p>
-      </div>
-      <div>
-        <input type="submit" />
-      </div>
-      <button onClick={deleteCreator}>Delete Creator</button>
-    </form>
+    creatorData && (
+      <Container>
+        <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+          <TextField
+            label="Creator's Name"
+            variant="filled"
+            className="form-input"
+            {...register("name")}
+            error={!!errors.name}
+            defaultValue={creatorData[0]?.name}
+            InputProps={{
+              readOnly: true,
+            }}
+            helperText={errors.name?.message}
+          />
+          <TextField
+            label="Creator's URL"
+            variant="filled"
+            className="form-input"
+            {...register("url")}
+            error={!!errors.url}
+            defaultValue={creatorData[0]?.url}
+            helperText={errors.url?.message}
+          />
+          <TextField
+            label="Creator's Description"
+            variant="filled"
+            className="form-input"
+            multiline
+            rows={2}
+            maxRows={4}
+            {...register("desc")}
+            error={!!errors.desc}
+            helperText={errors.desc?.message}
+          />
+          <TextField
+            label="Creator's Image URL"
+            variant="filled"
+            className="form-input"
+            {...register("img")}
+            error={!!errors.img}
+            defaultValue={creatorData[0]?.imageURL}
+            helperText={errors.img?.message}
+          />
+          <TextField
+            label="Creator's Youtube URL"
+            variant="filled"
+            className="form-input"
+            {...register("ytu")}
+            error={!!errors.ytu}
+            defaultValue={creatorData[0]?.youtubeURL}
+            helperText={errors.ytu?.message}
+          />
+          <TextField
+            label="Creator's Instagram URL"
+            variant="filled"
+            className="form-input"
+            {...register("igu")}
+            error={!!errors.igu}
+            defaultValue={creatorData[0]?.instagramURL}
+            helperText={errors.igu?.message}
+          />
+          <TextField
+            label="Creator's Twitter URL"
+            variant="filled"
+            className="form-input"
+            {...register("twu")}
+            error={!!errors.twu}
+            defaultValue={creatorData[0]?.twitterURL}
+            helperText={errors.twu?.message}
+          />
+          <Button variant="contained" className="form-submit" type="submit">
+            Save Changes
+          </Button>
+          <Button
+            variant="contained"
+            className="form-submit"
+            type="button"
+            onClick={deleteCreator}
+          >
+            Delete
+          </Button>
+        </form>
+      </Container>
+    )
   );
 }
 

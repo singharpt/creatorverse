@@ -1,10 +1,5 @@
 .app {
-  background-image: url("../public/lander-image-2.avif"); /* Update the path accordingly */
-  background-size: cover; /* Adjust how the image should cover the container */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-position: center center;
-  background-color: black;
-  height: 100vh; /* Set the height to 100% of the viewport height */
+  height: 100vh;
   color: white;
 }
 
