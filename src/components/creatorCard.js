@@ -12,8 +12,10 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 function Creator({ creatorData }) {
-  const viewCreatorURL = `/view/${creatorData.name}`;
+  const editCreatorURL = `/edit/${creatorData.name}`;
+
   let trimmedDescription = null;
+
   if (creatorData && creatorData.description.length > 100) {
     trimmedDescription = creatorData.description.slice(0, 100) + "...";
   } else {
@@ -73,7 +75,7 @@ function Creator({ creatorData }) {
             </CardActions>
           </div>
           <CardActions>
-            <Link to={viewCreatorURL}>
+            <Link to={editCreatorURL}>
               <EditIcon style={{ color: "black" }}>Edit Creator</EditIcon>
             </Link>
           </CardActions>

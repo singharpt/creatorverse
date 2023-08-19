@@ -1,44 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import deleteCreatorAPI from "../api/deleteCreatorAPI";
-import { getSingleCreator } from "../api/getCreatorAPI";
-import { decode } from "html-entities";
-import CreatorForm from "../components/creatorForm";
+import React from "react";
 
-function ViewCreator() {
-  const [creatorData, setCreatorData] = useState(null);
-
-  let url_coded_name = useParams();
-  const { creatorName } = decode(url_coded_name);
-
-  const fetchData = async () => {
-    const data = await getSingleCreator(creatorName);
-    if (data) {
-      setCreatorData(data);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const navigate = useNavigate({ replace: true });
-
-  const deleteCreator = async () => {
-    const res = await deleteCreatorAPI(creatorName);
-    if (res) {
-      navigate("/show");
-    }
-  };
-
+function ViewCreator(creatorData) {
   return (
-    creatorData && (
-      <CreatorForm
-        creatorData={creatorData[0]}
-        deleteCreatorFunction={deleteCreator}
-        operation="update"
-      />
-    )
+    <main className="view-creator">
+      <div className="view-creator-left">
+        <img src={creatorData.imageURL} alt="creator"></img>
+      </div>
+      <div className="view-creator-right">
+        <p>{creatorData.name}</p>
+        <p>{creatorData.youtubeURL}</p>
+        <p>{creatorData.instagramURL}</p>
+        <p>{creatorData.twitterURL}</p>
+        <p>{creatorData.description}</p>
+        <div className="view-creator-buttons">
+          <button className="view-creator-button-edit">Edit Creator</button>
+          <button className="view-creator-button-delete">Delete Creator</button>
+        </div>
+      </div>
+    </main>
   );
 }
+
 export default ViewCreator;

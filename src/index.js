@@ -4,8 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Form from "./pages/AddCreator";
+import Form from "./pages/AddCreators";
 import ShowCreators from "./pages/ShowCreators";
+import EditCreator from "./pages/EditCreators";
 import ViewCreator from "./pages/ViewCreator";
 import Header from "./Header";
 
@@ -18,6 +19,7 @@ root.render(
         <Route path="/" element={<App />}></Route>
         <Route path="/add" element={<Form />}></Route>
         <Route path="/show" element={<ShowCreators />}></Route>
+        <Route path="/edit/:creatorName" element={<EditCreator />}></Route>
         <Route path="/view/:creatorName" element={<ViewCreator />}></Route>
       </Routes>
     </BrowserRouter>

@@ -4,3 +4,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.title {
+  position: absolute; /* Position the title absolutely */
+  top: 0;
+  z-index: 1; /* Place the title above the cards */
+}
