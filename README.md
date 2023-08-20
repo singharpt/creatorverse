@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# WELCOME TO \*👉🏿 CREATORVERSE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Submitted by: **👉🏿 Arpit Singh**
 
-## Available Scripts
+About this web app: **👉🏿 It is a simple content management interface where you can view/add/modify/delete your favourite creators.**
 
-In the project directory, you can run:
+Tech stack used: **👉🏿 Front-End -> React, CSS, Material UI | Datbase & ORM -> Supabase**
 
-### `npm start`
+How to run the app **👉🏿 Very Important**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Create an account at Supabase
+2. Create a new project at Supabase
+3. Create a "creators" table with columns
+   1. name - varchar
+   2. url - varchar
+   3. description - text
+   4. imageURL - varchar
+   5. youtubeURL - varchar
+   6. instagramURL - varchar
+   7. twitterURL - varchar
+4. After creating the table get your credentials
+   1. API_KEY
+   2. URL
+5. Open the CLI: Git clone the repo: https://github.com/singharpt/creatorverse.git
+6. Run command: npm install (to install the node packages)
+7. Once the project directory is visible create a .env file and add your credentials you got from supabase
+   1. REACT_APP_API_KEY=your_key
+   2. REACT_APP_URL=your_url
+8. Make sure you add .env to .gitignore so that you don't expose any sensitive data
+9. Run command: npm start
+10. Interact with the web interface and enjoy.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Time spent: **👉🏿 12** hours
 
-### `npm test`
+## Required Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The following **required** functionality is completed:
 
-### `npm run build`
+<!-- 👉🏿👉🏿👉🏿 Make sure to check off completed functionality below -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [DONE] **A logical component structure in React is used to create the frontend of the app**
+- [DONE] **At least five content creators are displayed on the homepage of the app**
+- [DONE] **Each content creator item includes their name, a link to their channel/page, and a short description of their content**
+- [DONE] **API calls use the async/await design pattern via Axios or fetch()**
+- [DONE] **Clicking on a content creator item takes the user to their details page, which includes their name, url, and description**
+- [DONE] **Each content creator has their own unique URL**
+- [DONE] **The user can edit a content creator to change their name, url, or description**
+- [DONE] **The user can delete a content creator**
+- [DONE] **The user can add a new content creator by entering a name, url, or description and then it is displayed on the homepage**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The following **optional** features are implemented:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [x] Picocss is used to style HTML elements
+- [DONE] The content creator items are displayed in a creative format, like cards instead of a list
+- [DONE] An image of each content creator is shown on their content creator card
 
-### `npm run eject`
+The following **additional** features are implemented:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [ ] User can add social links for creators.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Video Walkthrough
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Here's a walkthrough of implemented required features:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- 👉🏿<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> -->
 
-## Learn More
+<!-- Replace this with whatever GIF tool you used! -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+GIF created with ... 👉🏿 GIF tool here
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- Recommended tools:
+[Kap](https://getkap.co/) for macOS
+[ScreenToGif](https://www.screentogif.com/) for Windows
+[peek](https://github.com/phw/peek) for Linux. -->
 
-### Code Splitting
+## Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Describe any challenges encountered while building the app or any additional context you'd like to add.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Copyright [👉🏿 2023] [👉🏿 Arpit Singh]
 
-### Making a Progressive Web App
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> http://www.apache.org/licenses/LICENSE-2.0
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
