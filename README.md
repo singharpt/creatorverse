@@ -6,15 +6,7 @@ About this web app: **👉🏿 It is a simple content management interface where
 
 Time spent: **👉🏿 12** hours
 
-## Video Walkthrough
-
-Here's a walkthrough of implemented required features:
-
-👉🏿<img src='https://github.com/singharpt/creatorverse/blob/main/public/creatorverse_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with ... 👉🏿 LICECap for MacOS
-
-## Required Features
+## Required Featuresx
 
 The following **required** functionality is completed:
 
@@ -40,6 +32,14 @@ The following **additional** features are implemented:
 
 - [x] User can add social links for creators.
 - [x] Used material UI for react to add various functionalities.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented required features:
+
+👉🏿<img src='https://github.com/singharpt/creatorverse/blob/main/public/creatorverse_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with ... 👉🏿 LICECap for MacOS
 
 ## Notes
 
