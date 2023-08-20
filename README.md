@@ -56,7 +56,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] User can add social links for creators.
+- [X] User can add social links for creators.
 
 ## Video Walkthrough
 
