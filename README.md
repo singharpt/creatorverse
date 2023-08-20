@@ -1,4 +1,4 @@
-# WELCOME TO \👉🏿 CREATORVERSE
+# WELCOME TO 👉🏿 CREATORVERSE
 
 Submitted by: **👉🏿 Arpit Singh**
 
