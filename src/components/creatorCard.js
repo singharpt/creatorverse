@@ -19,8 +19,8 @@ function Creator({ creatorData }) {
 
   let trimmedDescription = null;
 
-  if (creatorData && creatorData.description.length > 100) {
-    trimmedDescription = creatorData.description.slice(0, 100) + "...";
+  if (creatorData && creatorData.description.length > 90) {
+    trimmedDescription = creatorData.description.slice(0, 90) + "...";
   } else {
     trimmedDescription = creatorData.description;
   }

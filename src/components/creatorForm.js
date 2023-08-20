@@ -48,7 +48,7 @@ function CreatorForm(props) {
     name: yup.string().required("Creator name is required!"),
     url: yup
       .mixed()
-      .test("urlCheck", "URL must start with 'https' or be null", checkURL)
+      .test("urlCheck", "URL must start with 'https'", checkURL)
       .required("Creator URL is required"),
     desc: yup.string(),
     img: yup
@@ -125,6 +125,7 @@ function CreatorForm(props) {
           label="Creator's Name"
           variant="filled"
           className="form-input"
+          required
           {...register("name")}
           error={!!errors.name}
           defaultValue={creatorData && creatorData?.name}
@@ -134,6 +135,7 @@ function CreatorForm(props) {
         <TextField
           label="Creator's Page URL"
           variant="filled"
+          required
           InputProps={
             creatorData && {
               readOnly: true,
@@ -142,7 +144,7 @@ function CreatorForm(props) {
           className="form-input"
           {...register("url")}
           error={!!errors.url}
-          defaultValue={creatorData === null ? "https://" : creatorData?.url}
+          defaultValue={creatorData && creatorData?.url}
           helperText={errors.url?.message}
           margin="normal"
         />
