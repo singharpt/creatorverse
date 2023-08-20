@@ -4,19 +4,27 @@ const updateCreator = async (req) => {
   const { error } = await supabase
     .from("creators")
     .update({
-      url: req.url,
+      name: req.name,
       description: req.desc,
       imageURL: req.img,
       youtubeURL: req.ytu,
       instagramURL: req.igu,
       twitterURL: req.twu,
     })
-    .eq("name", req.name);
+    .eq("url", req.url);
 
   if (error) {
-    return false;
+    const res = {
+      task: false,
+      message: "Error in updating creator, please try again!",
+    };
+    return res;
   }
-  return true;
+  const res = {
+    task: true,
+    message: "Creator updated successfully",
+  };
+  return res;
 };
 
 export default updateCreator;

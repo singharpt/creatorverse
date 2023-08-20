@@ -4,21 +4,46 @@ export const getAllCreators = async () => {
   const { data, error } = await supabase.from("creators").select();
 
   if (error) {
-    console.error("Error fetching records:", error);
-    return null;
+    const res = {
+      task: false,
+      message: "Error in getting creators data, please try again!",
+    };
+    return res;
   }
-  return data;
+  const res = {
+    task: true,
+    message: "Data received successfully!",
+    data: data,
+  };
+  return res;
 };
 
-export const getSingleCreator = async (creatorName) => {
+export const getSingleCreator = async (req) => {
+  console.log("get single api", req.name, req.url);
   const { data, error } = await supabase
     .from("creators")
     .select()
-    .eq("name", creatorName);
+    .eq("url", req.url);
 
   if (error) {
-    console.error("Error fetching records:", error);
-    return null;
+    const res = {
+      task: false,
+      message: "Error in getting creators data, please try again!",
+    };
+    return res;
   }
-  return data;
+  if (data.length > 0) {
+    const res = {
+      task: true,
+      message: "Data received successfully!",
+      data: data,
+    };
+    return res;
+  } else {
+    const res = {
+      task: false,
+      message: "Creator requested does not exist",
+    };
+    return res;
+  }
 };

@@ -5,14 +5,17 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-// import defaultImage from "../static/dummy-image-placeholder.png";
 import EditIcon from "@mui/icons-material/Edit";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import InfoIcon from "@mui/icons-material/Info";
+import { encoder } from "../components/urlEncoder";
 
 function Creator({ creatorData }) {
-  const editCreatorURL = `/edit/${creatorData.name}`;
+  const url = encoder(creatorData.url);
+  const editCreatorURL = `/edit/${creatorData.name}/${url}`;
+  const viewCreatorURL = `/view/${creatorData.name}/${url}`;
 
   let trimmedDescription = null;
 
@@ -75,9 +78,14 @@ function Creator({ creatorData }) {
             </CardActions>
           </div>
           <CardActions>
-            <Link to={editCreatorURL}>
-              <EditIcon style={{ color: "black" }}>Edit Creator</EditIcon>
-            </Link>
+            <span style={{ display: "flex", flexDirection: "row", gap: "5px" }}>
+              <Link to={viewCreatorURL}>
+                <InfoIcon style={{ color: "black" }} />
+              </Link>
+              <Link to={editCreatorURL}>
+                <EditIcon style={{ color: "black" }} />
+              </Link>
+            </span>
           </CardActions>
         </Typography>
         <Typography

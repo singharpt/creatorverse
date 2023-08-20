@@ -18,7 +18,7 @@ function App() {
       <div className="lander">
         <div className="lander-heading">
           <h1 className="lander-heading-h1">
-            CREATORVERSE{" "}
+            CREATORVERSE <br />
             <span className="lander-heading-h1-span">
               {"<"}
               {text}

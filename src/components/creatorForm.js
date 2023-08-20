@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -7,11 +7,32 @@ import updateCreatorAPI from "../api/updateCreatorAPI";
 import addCreatorAPI from "../api/addCreatorAPI";
 import { TextField, Button, Container } from "@mui/material";
 import "./comp.css";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 function CreatorForm(props) {
   const creatorData = props.creatorData;
   const deleteCreatorFunction = props.deleteCreatorFunction;
   const operation = props.operation;
+
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  // Define a state variable to manage the Snackbar visibility
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [snackbarSeverity, setSnackbarSeverity] = React.useState("success");
+  const [snackbarMessage, setSnackbarMessage] = React.useState("");
+
+  const handleOpenDeleteDialog = () => {
+    setDeleteDialogOpen(true);
+  };
+
+  const handleCloseDeleteDialog = () => {
+    setDeleteDialogOpen(false);
+  };
 
   const navigate = useNavigate({ replace: true });
 
@@ -27,7 +48,8 @@ function CreatorForm(props) {
     name: yup.string().required("Creator name is required!"),
     url: yup
       .mixed()
-      .test("urlCheck", "URL must start with 'https' or be null", checkURL),
+      .test("urlCheck", "URL must start with 'https' or be null", checkURL)
+      .required("Creator URL is required"),
     desc: yup.string(),
     img: yup
       .mixed()
@@ -53,17 +75,40 @@ function CreatorForm(props) {
     defaultValues: creatorData ? creatorData : {},
   });
 
-  // The submit function called inside handleSubmit state method
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
   const onSubmit = async (data) => {
+    // Open Snackbar while making the API call
+    setSnackbarOpen(true);
+
     if (operation === "update") {
       const response = await updateCreatorAPI(data);
-      if (response) {
+      if (response.task) {
+        // Handle success
         navigate("/show");
+        setSnackbarSeverity("success");
+        setSnackbarMessage(response.message);
+      } else {
+        // Handle error
+        setSnackbarSeverity("error");
+        setSnackbarMessage(response.message);
       }
     } else {
       const response = await addCreatorAPI(data);
-      if (response) {
+      if (response.task) {
+        // Handle success
         navigate("/show");
+        setSnackbarSeverity("success");
+        setSnackbarMessage(response.message);
+      } else {
+        // Handle error
+        setSnackbarSeverity("error");
+        setSnackbarMessage(response.message);
       }
     }
   };
@@ -84,16 +129,16 @@ function CreatorForm(props) {
           error={!!errors.name}
           defaultValue={creatorData && creatorData?.name}
           margin="normal"
-          InputProps={
-            creatorData && {
-              readOnly: true,
-            }
-          }
           helperText={errors.name?.message}
         />
         <TextField
           label="Creator's Page URL"
           variant="filled"
+          InputProps={
+            creatorData && {
+              readOnly: true,
+            }
+          }
           className="form-input"
           {...register("url")}
           error={!!errors.url}
@@ -158,7 +203,11 @@ function CreatorForm(props) {
           <Button
             variant="contained"
             size="large"
-            style={{ width: "100%", fontWeight: "600" }}
+            style={{
+              width: "100%",
+              fontWeight: "600",
+              backgroundColor: "#00bcd4",
+            }}
             type="submit"
           >
             Save Creator
@@ -169,7 +218,7 @@ function CreatorForm(props) {
               color="error"
               type="button"
               style={{ width: "100%", fontWeight: "bold" }}
-              onClick={deleteCreatorFunction}
+              onClick={handleOpenDeleteDialog} // Open the confirmation dialog
               size="large"
             >
               Delete Creator
@@ -177,6 +226,47 @@ function CreatorForm(props) {
           )}
         </div>
       </form>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbarSeverity}
+          sx={{ width: "100%" }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+      <Dialog
+        open={deleteDialogOpen}
+        onClose={handleCloseDeleteDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Delete Creator"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this creator?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDeleteDialog} color="primary">
+            Cancel
+          </Button>
+          <Button
+            onClick={() => {
+              handleCloseDeleteDialog();
+              deleteCreatorFunction(); // Execute the delete action
+            }}
+            color="primary"
+            autoFocus
+          >
+            Confirm Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }

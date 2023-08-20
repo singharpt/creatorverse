@@ -1,24 +1,38 @@
-import React from "react";
+import "./pages.css";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSingleCreator } from "../api/getCreatorAPI";
+import { decode } from "html-entities";
+import CreatorView from "../components/creatorView";
+import { decoder } from "../components/urlEncoder";
 
-function ViewCreator(creatorData) {
-  return (
-    <main className="view-creator">
-      <div className="view-creator-left">
-        <img src={creatorData.imageURL} alt="creator"></img>
-      </div>
-      <div className="view-creator-right">
-        <p>{creatorData.name}</p>
-        <p>{creatorData.youtubeURL}</p>
-        <p>{creatorData.instagramURL}</p>
-        <p>{creatorData.twitterURL}</p>
-        <p>{creatorData.description}</p>
-        <div className="view-creator-buttons">
-          <button className="view-creator-button-edit">Edit Creator</button>
-          <button className="view-creator-button-delete">Delete Creator</button>
-        </div>
-      </div>
-    </main>
-  );
+function ViewCreator() {
+  const [creatorData, setCreatorData] = useState(null);
+
+  let url_data = useParams();
+  let url_coded_name = url_data.creatorName;
+  let url_coded_url = url_data.creatorURL;
+
+  const creatorName = decode(url_coded_name);
+  const creatorURL = decoder(url_coded_url);
+
+  const req = {
+    name: creatorName,
+    url: creatorURL,
+  };
+
+  const fetchData = async () => {
+    const response = await getSingleCreator(req);
+    if (response.task) {
+      setCreatorData(response.data);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return creatorData && <CreatorView data={creatorData[0]} />;
 }
 
 export default ViewCreator;

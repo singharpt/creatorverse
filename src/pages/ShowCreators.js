@@ -8,9 +8,9 @@ function ShowCreators() {
   const [creatorData, setCreatorData] = useState(null);
 
   const fetchData = async () => {
-    const data = await getAllCreators();
-    if (data) {
-      setCreatorData(data);
+    const response = await getAllCreators();
+    if (response.task) {
+      setCreatorData(response.data);
     }
   };
 
@@ -30,7 +30,7 @@ function ShowCreators() {
           textAlign: "center",
         }}
       >
-        CREATOR'S AB'OOOARD
+        CREATORS AB'OOARD
         <img
           src={creatoricon}
           style={{

@@ -19,8 +19,14 @@ root.render(
         <Route path="/" element={<App />}></Route>
         <Route path="/add" element={<Form />}></Route>
         <Route path="/show" element={<ShowCreators />}></Route>
-        <Route path="/edit/:creatorName" element={<EditCreator />}></Route>
-        <Route path="/view/:creatorName" element={<ViewCreator />}></Route>
+        <Route
+          path="/edit/:creatorName/:creatorURL"
+          element={<EditCreator />}
+        ></Route>
+        <Route
+          path="/view/:creatorName/:creatorURL"
+          element={<ViewCreator />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
