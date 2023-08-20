@@ -50,28 +50,22 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [-] Picocss is used to style HTML elements
+- [] Picocss is used to style HTML elements
 - [x] The content creator items are displayed in a creative format, like cards instead of a list
 - [x] An image of each content creator is shown on their content creator card
 
 The following **additional** features are implemented:
 
 - [x] User can add social links for creators.
+- [x] Used material UI for react to add various functionalities.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
 
-<!-- 👉🏿<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> -->
+👉🏿<img src='https://github.com/singharpt/creatorverse/blob/main/public/creatorverse_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-
-GIF created with ... 👉🏿 GIF tool here
-
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+GIF created with ... 👉🏿 LICECap for MacOS
 
 ## Notes
 
