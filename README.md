@@ -33,7 +33,7 @@ The following **additional** features are implemented:
 - [x] User can add social links for creators.
 - [x] Used material UI for react to add various functionalities.
 
-## Video Walkthrough
+## Video Walkthrough (Wait for the gif to load)
 
 Here's a walkthrough of implemented required features:
 
