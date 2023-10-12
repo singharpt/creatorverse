@@ -4,7 +4,7 @@ Submitted by: **Arpit Singh**
 
 About this web app: **It is a simple content management interface where you can view/add/modify/delete your favourite creators.**
 
-Time spent: ** 12** hours
+Time spent: **12** hours
 
 ## Required Featuresx
 
