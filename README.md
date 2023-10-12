@@ -1,10 +1,10 @@
-# WELCOME TO 👉🏿 CREATORVERSE
+# WELCOME TO CREATORVERSE
 
-Submitted by: **👉🏿 Arpit Singh**
+Submitted by: **Arpit Singh**
 
-About this web app: **👉🏿 It is a simple content management interface where you can view/add/modify/delete your favourite creators.**
+About this web app: **It is a simple content management interface where you can view/add/modify/delete your favourite creators.**
 
-Time spent: **👉🏿 12** hours
+Time spent: ** 12** hours
 
 ## Required Featuresx
 
@@ -39,13 +39,13 @@ Here's a walkthrough of implemented required features:
 
 👉🏿<img src='https://github.com/singharpt/creatorverse/blob/main/public/creatorverse_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with ... 👉🏿 LICECap for MacOS
+GIF created with ... LICECap for MacOS
 
 ## Notes
 
-Tech stack used: **👉🏿 Front-End -> React, CSS, Material UI | Datbase & ORM -> Supabase**
+Tech stack used: **Front-End -> React, CSS, Material UI | Datbase & ORM -> Supabase**
 
-How to run the app **👉🏿 Very Important**
+How to run the app **Very Important**
 
 1. Create an account at Supabase
 2. Create a new project at Supabase
@@ -71,7 +71,7 @@ How to run the app **👉🏿 Very Important**
 
 ## License
 
-Copyright [👉🏿 2023] [👉🏿 Arpit Singh]
+Copyright [2023] [Arpit Singh]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
