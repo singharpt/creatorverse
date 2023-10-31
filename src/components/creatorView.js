@@ -2,7 +2,6 @@ import React from "react";
 import ytImg from "../static/yt_icon_rgb.png";
 import igImg from "../static/instagram.png";
 import twImg from "../static/twitter.png";
-import { Link } from "react-router-dom";
 import "./comp.css";
 import placeholderImg from "../static/dummy-image-placeholder.png";
 
@@ -47,9 +46,14 @@ function CreatorView(props) {
                 </span>
 
                 <span>
-                  <Link to={creatorData.youtubeURL} className="no-underline">
+                  <a
+                    href={creatorData.youtubeURL}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "white" }}
+                  >
                     {processURL(creatorData.youtubeURL)}
-                  </Link>
+                  </a>
                 </span>
               </p>
             )}
@@ -69,9 +73,14 @@ function CreatorView(props) {
                 </span>
                 <span>
                   {" "}
-                  <Link to={creatorData.instagramURL} className="no-underline">
+                  <a
+                    href={creatorData.instagramURL}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "white" }}
+                  >
                     {processURL(creatorData.instagramURL)}
-                  </Link>
+                  </a>
                 </span>
               </p>
             )}
@@ -90,9 +99,14 @@ function CreatorView(props) {
                   />
                 </span>
                 <span>
-                  <Link to={creatorData.twitterURL} className="no-underline">
+                  <a
+                    href={creatorData.twitterURL}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "white" }}
+                  >
                     {processURL(creatorData.twitterURL)}
-                  </Link>
+                  </a>
                 </span>
               </p>
             )}

@@ -19,7 +19,6 @@ function Header() {
             <HomeIcon />
           </IconButton>
         </Link>
-        {/* You can add more navigation links or components here */}
       </Toolbar>
     </AppBar>
   );

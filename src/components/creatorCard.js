@@ -10,7 +10,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InfoIcon from "@mui/icons-material/Info";
-import { encoder } from "../components/urlEncoder";
+import { encoder } from "./urlEncoder";
 
 function Creator({ creatorData }) {
   const url = encoder(creatorData.url);
@@ -61,19 +61,31 @@ function Creator({ creatorData }) {
             {creatorData.name}
             <CardActions>
               {creatorData?.youtubeURL && (
-                <Link to={creatorData?.youtubeURL}>
+                <a
+                  href={creatorData?.youtubeURL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <YouTubeIcon style={{ color: "black" }}>{}</YouTubeIcon>
-                </Link>
+                </a>
               )}
               {creatorData?.instagramURL && (
-                <Link to={creatorData?.instagramURL}>
+                <a
+                  href={creatorData?.instagramURL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <InstagramIcon style={{ color: "black" }}>{}</InstagramIcon>
-                </Link>
+                </a>
               )}
               {creatorData?.twitterURL && (
-                <Link to={creatorData?.twitterURL}>
+                <a
+                  href={creatorData?.twitterURL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <TwitterIcon style={{ color: "black" }}>{}</TwitterIcon>
-                </Link>
+                </a>
               )}
             </CardActions>
           </div>

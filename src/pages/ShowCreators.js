@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllCreators } from "../api/getCreatorAPI";
-import Creator from "../components/creatorCard";
+import Creator from "../components/CreatorCard";
 import "./pages.css";
 import creatoricon from "../static/rating.png";
 

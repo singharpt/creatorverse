@@ -22,9 +22,9 @@ function CreatorForm(props) {
 
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   // Define a state variable to manage the Snackbar visibility
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
-  const [snackbarSeverity, setSnackbarSeverity] = React.useState("success");
-  const [snackbarMessage, setSnackbarMessage] = React.useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const handleOpenDeleteDialog = () => {
     setDeleteDialogOpen(true);

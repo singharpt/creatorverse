@@ -1,5 +1,5 @@
 import React from "react";
-import CreatorForm from "../components/creatorForm";
+import CreatorForm from "../components/CreatorForm";
 
 function Form() {
   return (

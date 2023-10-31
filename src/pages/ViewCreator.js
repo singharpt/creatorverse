@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleCreator } from "../api/getCreatorAPI";
 import { decode } from "html-entities";
-import CreatorView from "../components/creatorView";
+import CreatorView from "../components/CreatorView";
 import { decoder } from "../components/urlEncoder";
 
 function ViewCreator() {

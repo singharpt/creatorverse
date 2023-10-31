@@ -4,7 +4,7 @@ import deleteCreatorAPI from "../api/deleteCreatorAPI";
 import { getSingleCreator } from "../api/getCreatorAPI";
 import { decode } from "html-entities";
 import { decoder } from "../components/urlEncoder";
-import CreatorForm from "../components/creatorForm";
+import CreatorForm from "../components/CreatorForm";
 
 function EditCreator() {
   const [creatorData, setCreatorData] = useState(null);
